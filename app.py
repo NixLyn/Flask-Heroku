@@ -391,25 +391,25 @@ def admin():
 
                 try:
                     if request.form['submit_it'] == 'DELETE_SLOT':
-                        #print("\n\n\n\n\n\n\n\n\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\nDELETING>>>")
+                        print("\n\n\n\n\n\n\n\n\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\nDELETING>>>")
 
                         try:
                             date_ = request.form['date_']
                             slot_num = request.form['slot_num']
                             name_ = request.form['user_name']
                             mail_ = request.form['user_email']
-                            #print("\n@\n#\n!\n::DATE:: ", str(date_), "\n::SLOT_::", str(slot_num), "\n::NAME_::", str(name_), "\n::EMAIL_::", str(mail_), ":::@\n#\n")
+                            print("\n@\n#\n!\n::DATE:: ", str(date_), "\n::SLOT_::", str(slot_num), "\n::NAME_::", str(name_), "\n::EMAIL_::", str(mail_), ":::@\n#\n")
 
                             # GET THE SLOT VALUE
                             if len(slot_num) == 11:
-                                #print("[SLOT_INDEX]:", str(slot_num[-2:]))
+                                print("[SLOT_INDEX]:", str(slot_num[-2:]))
                                 lst_index = slot_num[-2:]
                             elif len(slot_num) == 10:
-                                #print("[SLOT_INDEX]:", str(slot_num[-1]))
+                                print("[SLOT_INDEX]:", str(slot_num[-1]))
                                 lst_index = slot_num[-1]
 
                             Slot_Update().open_slot(date_, lst_index)
-                            #print("OPENING_SLOT_BY_INDEX")
+                            print("OPENING_SLOT_BY_INDEX")
 
                             Break_Data().rm_slot(date_, lst_index)
 
@@ -438,38 +438,38 @@ def admin():
                 # UPDATE TO ADMIN
                 try:
                     news_ = str(File_man().read_file("dataBase/NEWS.txt", "*")[0][:-2])
-                    #print("\n*****\n#####\nNEWS: \n")
+                    print("\n*****\n#####\nNEWS: \n")
                 except:
                     news_ = "[ERROR]"
                     print("[ERROR]:[NEWS_]:")
                 try:
                     about_ = str(File_man().read_file("dataBase/PARA.txt", "*")[0][:-2])
-                    #print("\n*****\n#####\nNEWS: \n")
+                    print("\n*****\n#####\nNEWS: \n")
                 except:
                     about_ = "[ERROR]"
                     print("[ERROR]:[ABOUT_]:")
                 try:
                     bookings = Break_Data().pull_stack()
-                    #print("\n*****\n#####\nSTACK_PULL: \n")
+                    print("\n*****\n#####\nSTACK_PULL: \n")
                 except:
                     bookings = "[ERROR]"
                     print("[ERROR]:[BOOKINGS]:")
                 try:
                     boat_1_books = File_man().read_file("dataBase/CAL_DATES.txt", "@")
-                    #print("\n*****\n#####\nBAOT_1_BOOK: \n")
+                    print("\n*****\n#####\nBAOT_1_BOOK: \n")
                 except:
                     boat_1_books = "[ERROR]"
-                    #print("[ERROR]:[BOAT_!_BOOK]:")
+                    print("[ERROR]:[BOAT_!_BOOK]:")
                 try:
                     full_dates = Slot_Update().full_dates(boat_1_books)
-                    #print("\n*****\n#####\nFULL_DATES: \n")
+                    print("\n*****\n#####\nFULL_DATES: \n")
                 except:
                     full_dates = "[ERROR]"
-                    #print("[ERROR]:[FULL_DATES]:")
+                    print("[ERROR]:[FULL_DATES]:")
                 try:
                     #our_users = Users_.query.all()
                     our_users = User_Set().get_set_users()
-                    #print("\n*****\n#####\nSET_USERS: \n", str(our_users))
+                    print("\n*****\n#####\nSET_USERS: \n", str(our_users))
                 except Exception as e:
                     our_users = "[ERROR]"
                     print("[ERROR]:[USERS]:", str(e))
@@ -477,7 +477,7 @@ def admin():
 
                 return render_template("admin_.html",news_up=news_,bookings=bookings,  users=our_users, about=about_)
             except Exception as e:
-                print("[E]:[admin]:[", str(e),"]")
+                print("E:admin:", str(e))
                 return render_template("admin_.html", news_up="[ERROR]")
 
         except Exception as e:

@@ -90,8 +90,6 @@ section {
     z-index: auto;
 }
 
-
-
 .boats {
     margin-top: 0;
     height: 30vh;
@@ -128,7 +126,6 @@ section {
     z-index: 1;
 }
 
-
 .scroll-track {
     position: relative;
     display: flex;
@@ -160,7 +157,7 @@ section {
     overflow: hidden;
     perspective: 100px;
     cursor: pointer;
-    background-color: rgba(17, 206, 219, 0.2);
+    background-color: #11cedb33;
     border-radius: 0.6rem;
     margin-right: 15px;
 }
@@ -248,7 +245,6 @@ only screen and (min-device-pixel-ratio : 1.5){
     }
     .scroll-track div{
     	width: 10020px;
-
     }
     .scroll-track {
         position: relative;
